@@ -78,7 +78,7 @@ class _Screen2State extends State<Screen2> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Padding(
-              padding: const EdgeInsets.only(top: 200),
+              padding: const EdgeInsets.only(top: 150),
               child: Center(
                 child: Container(
                   width: 300,
@@ -94,6 +94,7 @@ class _Screen2State extends State<Screen2> {
                     padding: const EdgeInsets.only(top: 20, bottom: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Success"),
                         GestureDetector(

@@ -10,26 +10,42 @@ String listUserToJson(ListUser data) => json.encode(data.toJson());
 
 class ListUser {
     ListUser({
+        required this.page,
+        required this.perPage,
+        required this.total,
+        required this.totalPages,
         required this.data,
         required this.support,
     });
 
-    Data data;
+    int page;
+    int perPage;
+    int total;
+    int totalPages;
+    List<Datum> data;
     Support support;
 
     factory ListUser.fromJson(Map<String, dynamic> json) => ListUser(
-        data: Data.fromJson(json["data"]),
+        page: json["page"],
+        perPage: json["per_page"],
+        total: json["total"],
+        totalPages: json["total_pages"],
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
         support: Support.fromJson(json["support"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "data": data.toJson(),
+        "page": page,
+        "per_page": perPage,
+        "total": total,
+        "total_pages": totalPages,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
         "support": support.toJson(),
     };
 }
 
-class Data {
-    Data({
+class Datum {
+    Datum({
         required this.id,
         required this.email,
         required this.firstName,
@@ -43,7 +59,7 @@ class Data {
     String lastName;
     String avatar;
 
-    factory Data.fromJson(Map<String, dynamic> json) => Data(
+    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json["id"],
         email: json["email"],
         firstName: json["first_name"],
